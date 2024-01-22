@@ -1,0 +1,41 @@
+version: '3'
+
+services:
+  timescaledb:
+    image: timescale/timescaledb:latest-pg14
+    environment:
+      POSTGRES_PASSWORD: ${TIMESCALEDB_PASSWORD}
+      POSTGRES_DB: timeseries  # Updated database name
+    ports:
+      - "5432:5432"
+    networks:
+      - timescale-network
+    volumes:
+      - timescaledb-data:/var/lib/postgresql/data
+
+  experiment:
+    build:
+      context: ./flask_server
+      dockerfile: Dockerfile-experiment.dockerfile
+    environment:
+      TIMESCALEDB_PASSWORD: ${TIMESCALEDB_PASSWORD}
+      POSTGRES_HOST: timescaledb
+      POSTGRES_PORT: 5432
+      POSTGRES_USER: postgres
+      POSTGRES_DB: timeseries  # Updated database name
+      FLASK_APP: app.py
+      FLASK_RUN_HOST: 0.0.0.0
+      FLASK_RUN_PORT: 5000      
+    depends_on:
+      - timescaledb
+    networks:
+      - timescale-network
+    ports:
+      - "5000:5000"  # Map external port to container's port      
+
+networks:
+  timescale-network:
+    driver: bridge
+
+volumes:
+  timescaledb-data:
