@@ -1,8 +1,12 @@
+"""Module providing main entry to Flask ."""
 import os
 from flask import Flask, abort, jsonify
 
 from hexagonal import get_symbols_use_case, get_symbol_details_use_case
-from infrastructure import get_symbols_repository, get_symbol_details_repository
+from infrastructure import (
+    get_symbols_repository,
+    get_symbol_details_repository,
+)
 
 
 app = Flask(__name__)
@@ -25,7 +29,9 @@ def get_symbols():
 @app.route("/symbols/<string:symbol>", methods=["GET"])
 def get_symbol_details(symbol: str):
     try:
-        details = get_symbol_details_use_case(symbol, get_symbol_details_repository)
+        details = get_symbol_details_use_case(
+            symbol, get_symbol_details_repository
+        )
         if details:
             return jsonify(details)
         else:

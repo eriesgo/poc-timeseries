@@ -1,4 +1,4 @@
-# infrastructure.py
+"""Module access to the underlying TimeseriesDB database."""
 
 from typing import List, Optional, Tuple, cast
 import os
@@ -30,15 +30,13 @@ def get_symbols_repository() -> List[Tuple[str, str]]:
             """
             )
             cursor.execute(select_symbols_query)
-            symbols: List[Tuple[str, str]] = [
-                (row[0], row[1]) for row in cursor.fetchall()
-            ]
+            symbols: List[Tuple[str, str]] = [(row[0], row[1]) for row in cursor.fetchall()]
 
         connection.close()
         return symbols
 
     except Exception as e:
-        logging.error(f"An error occurred while retrieving symbols: {str(e)}")
+        logging.error("An error occurred while retrieving symbols: %s", {str(e)})
         raise
 
 
@@ -52,13 +50,11 @@ def get_symbol_details_repository(symbol: str) -> Tuple[str, str] | None:
             """
             )
             cursor.execute(select_symbol_query, (symbol,))
-            symbol_details: Optional[Tuple[str, str]] = cast(
-                Optional[Tuple[str, str]], cursor.fetchone()
-            )
+            symbol_details: Optional[Tuple[str, str]] = cast(Optional[Tuple[str, str]], cursor.fetchone())
 
         connection.close()
         return symbol_details
 
     except Exception as e:
-        logging.error(f"An error occurred while retrieving symbols: {str(e)}")
+        logging.error("An error occurred while retrieving symbols: %s", {str(e)})
         raise

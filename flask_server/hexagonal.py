@@ -1,4 +1,4 @@
-# hexagonal.py
+"""Module providing domain logic"""
 
 from typing import List, Dict, Tuple, Optional, Callable
 

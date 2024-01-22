@@ -1,0 +1,10 @@
+{
+    "recommendations": [
+        "ms-python.pylint",
+        "ms-python.black-formatter",
+        "ms-python.vscode-pylance",
+        "ms-python.python",
+        "sonarsource.sonarlint-vscode",
+        "ms-azuretools.vscode-docker"
+    ]
+}
