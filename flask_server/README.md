@@ -20,6 +20,11 @@ Typed hints
 - Without poetry: `mypy .`
 - With poetry: `poetry run mypy .`
 
+Style guide
+
+- Without poetry: `pylint *py`
+- With poetry: `poetry run pylint *py`
+
 ## Run the app
 
 Run the server
