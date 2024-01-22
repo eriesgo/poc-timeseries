@@ -9,7 +9,7 @@ app = Flask(__name__)
 
 # Retrieve environment variables
 flask_run_host = os.environ.get("FLASK_RUN_HOST", "localhost")
-flask_run_port = int(os.environ.get("FLASK_RUN_PORT", 5000))
+flask_run_port = int(os.environ.get("FLASK_RUN_PORT", 5001))
 
 # Endpoint to retrieve symbols from the "company" table
 @app.route('/symbols', methods=['GET'])

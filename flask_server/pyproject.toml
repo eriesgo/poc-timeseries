@@ -1,0 +1,18 @@
+[tool.poetry]
+name = "flask-server"
+version = "0.1.0"
+description = "POC to use flask and time series databases"
+authors = ["eriesgo"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+psycopg2-binary = "^2.9.9"
+Flask = "^3.0.1"
+
+[tool.poetry.group.dev.dependencies]
+mypy = "^1.8.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

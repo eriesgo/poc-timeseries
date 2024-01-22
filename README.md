@@ -1,4 +1,8 @@
+# Pre-requisites
 
+- Docker installed
+- `pipx` installed - https://github.com/pypa/pipx
+- `poetry` installed (using `pipx`) - https://python-poetry.org/docs/#installing-with-pipx
 
 # Docker
 
@@ -17,4 +21,4 @@ Run a command within a running container
 
 # Content
 
-- `/flask_server` - # poc-timeseries
+- `/flask_server` - # Proof of concept

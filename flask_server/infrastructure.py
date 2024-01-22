@@ -12,7 +12,7 @@ def connect_to_database() -> psycopg2.extensions.connection:
     user: str = os.environ.get("POSTGRES_USER", "postgres")
     password: str = os.environ.get("TIMESCALEDB_PASSWORD", "")
     database: str = os.environ.get("POSTGRES_DB", "timeseries")
-
+       
     connection: psycopg2.extensions.connection = psycopg2.connect(
         host=host,
         port=port,
