@@ -1,4 +1,5 @@
 """Module providing main entry to Flask ."""
+
 import os
 from flask import Flask, abort, jsonify
 
@@ -8,12 +9,17 @@ from infrastructure import (
     get_symbol_details_repository,
 )
 
-
 app = Flask(__name__)
 
 # Retrieve environment variables
 flask_run_host = os.environ.get("FLASK_RUN_HOST", "localhost")
 flask_run_port = int(os.environ.get("FLASK_RUN_PORT", 5001))
+
+
+# Endpoint to retrieve symbols from the "company" table
+@app.route("/", methods=["GET"])
+def get_root():
+    return "{ hello: world }"
 
 
 # Endpoint to retrieve symbols from the "company" table
@@ -29,9 +35,7 @@ def get_symbols():
 @app.route("/symbols/<string:symbol>", methods=["GET"])
 def get_symbol_details(symbol: str):
     try:
-        details = get_symbol_details_use_case(
-            symbol, get_symbol_details_repository
-        )
+        details = get_symbol_details_use_case(symbol, get_symbol_details_repository)
         if details:
             return jsonify(details)
         else:
