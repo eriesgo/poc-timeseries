@@ -1,5 +1,6 @@
 
-# Development model
+# Experiment with Python frameworks and timeseries DB
+
 [![linting: pylint](https://img.shields.io/badge/linting-pylint-yellowgreen)](https://github.com/pylint-dev/pylint)
 
 ## Requirements
@@ -15,14 +16,14 @@ Set up the environment
 
 ## Quality gates
 
-Typed hints
+Typed hints (`pyright`)
 
-- Without poetry: `mypy .`
-- With poetry: `poetry run mypy .`
+- Without poetry: `pyright .`
+- With poetry: `poetry run pyright .`
 
-Style guide
+Style guide (`pylint`)
 
-- Without poetry: `pylint *py`
+- Without poetry: `pylint src/`
 - With poetry: `poetry run pylint *py`
 
 ## Run the app

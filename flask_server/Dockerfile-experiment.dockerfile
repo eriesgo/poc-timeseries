@@ -14,10 +14,11 @@ WORKDIR /app
 COPY pyproject.toml poetry.lock ./
 RUN touch README.md
 
-RUN poetry install --without dev --no-root && rm -rf $POETRY_CACHE_DIR
+RUN poetry install --without dev --no-root && rm -rf $"POETRY_CACHE_DIR"
 
 COPY src .
 
 RUN poetry install --without dev
 
-ENTRYPOINT ["poetry", "run", "python", "-m", "app"]
+#ENTRYPOINT ["poetry", "run", "python", "-m", "app"]
+ENTRYPOINT ["poetry", "run", "uvicorn", "main:app", "--host", "0.0.0.0", "--port", "5000"]

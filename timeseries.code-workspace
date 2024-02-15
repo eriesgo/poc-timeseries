@@ -7,6 +7,11 @@
 	"settings": {
 		"python.analysis.typeCheckingMode": "strict",
 		"pylint.args": ["--rcfile=pylintrc"],
-		"pylint.cwd": "${workspaceFolder}/flask_server"
+		"pylint.cwd": "${workspaceFolder}/flask_server",
+		"cSpell.words": [
+			"pylint",
+			"pyright",
+			"timeseries"
+		]
 	}
 }
